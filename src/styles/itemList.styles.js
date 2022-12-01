@@ -14,3 +14,25 @@ export const WelcomeContainer = styled.div`
     align-items: center;
     padding-left: 35%
 `
+
+export const ListedItemsContainer = styled.div`
+flex: 100%;
+display: flex;
+align-items: center;
+margin: 10px;
+margin: 0;
+position: absolute;
+top: 30%;
+left: 50%;
+margin-right: -50%;
+transform: translate(-50%, -50%)
+`
+
+export const ListedItems =  styled.ul`
+    list-style: circle;
+    li {
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  `
+
+  
