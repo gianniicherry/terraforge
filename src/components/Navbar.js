@@ -27,8 +27,8 @@ function Navbar(){
         <LeftContainer>
             <NavbarLinkContainer>
                 <NavbarLink to="/">Home</NavbarLink>
-                <NavbarLink to="/ItemForm">Sell</NavbarLink>
-                <NavbarLink to="/ItemList">Bid</NavbarLink>
+                <NavbarLink to="/Sell">Sell</NavbarLink>
+                <NavbarLink to="/Bids">Bid</NavbarLink>
                 <OpenLinksButton 
                 onClick={handleExtendNavBar}>{extendNavbar ? <> &#10005;</> : <>&#8801;</>}
                 </OpenLinksButton>
