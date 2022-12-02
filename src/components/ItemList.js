@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react"
-import {Welcomebanner, WelcomeContainer, ListedItems, ListedItemsContainer} from "../styles/itemList.styles"
+import {ListedItemsContainer, Welcomebanner, WelcomeContainer} from "../styles/itemList.styles"
 import Item from "./Item"
 
 function ItemList() {
@@ -16,13 +16,15 @@ function ItemList() {
         <WelcomeContainer>
         <Welcomebanner>Hello from Terraforge</Welcomebanner>
         </WelcomeContainer>
-        <ListedItemsContainer>
-            <ListedItems className="Items">
-                <li>{items.map((item) => (
+        <div class="container">
+            <div class="row g-3">
+                {items.map((item) => (
+                    <div class="col-12 col-md-6 col-lg-4">
                     <Item key={item.id} item={item} />
-                ))}</li>
-                </ListedItems>  
-        </ListedItemsContainer>
+                    </div>
+                ))}
+                </div>
+            </div>
         </div>
     )
 }

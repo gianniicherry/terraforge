@@ -16,14 +16,15 @@ export const WelcomeContainer = styled.div`
 `
 
 export const ListedItemsContainer = styled.div`
+
 flex: 100%;
 display: flex;
 align-items: center;
 margin: 10px;
 margin: 0;
 position: absolute;
-top: 30%;
-left: 50%;
+top: 97%;
+left: 60%;
 margin-right: -50%;
 transform: translate(-50%, -50%)
 `

@@ -9,6 +9,7 @@ import ItemForm from "./components/ItemForm"
 
 function App() {
   return (
+  <div>
   <Router>
     <Navbar />
     <Routes>
@@ -17,6 +18,7 @@ function App() {
       <Route path="/Bids" element={<ItemList/>}/>
     </Routes>
   </Router>
+  </div>
   )
 }
 
