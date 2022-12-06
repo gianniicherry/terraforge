@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react"
-import {ListedItemsContainer, Welcomebanner, WelcomeContainer} from "../styles/itemList.styles"
+import { Welcomebanner, WelcomeContainer} from "../styles/itemList.styles"
 import Item from "./Item"
+import ItemForm from "./ItemForm"
 
 function ItemList() {
     const [items, setItems] = useState([])
@@ -11,6 +12,14 @@ function ItemList() {
         .then(data => setItems(data))
     })
 
+    function handleAddItem(newItem){
+        setItems([...items, newItem ])
+    }
+
+    function handleItemUpdate(updatedItem){
+            setItems(updatedItem)
+    }
+
     return (
         <div>
         <WelcomeContainer>
@@ -20,11 +29,14 @@ function ItemList() {
             <div class="row g-3">
                 {items.map((item) => (
                     <div class="col-12 col-md-6 col-lg-4">
-                    <Item key={item.id} item={item} />
+                    <Item key={item.id} item={item} onItemUpdate={handleItemUpdate}/>
                     </div>
                 ))}
                 </div>
             </div>
+            <div class="container g-3">
+        <ItemForm onAddItem={handleAddItem}/>
+        </div>
         </div>
     )
 }

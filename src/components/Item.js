@@ -4,7 +4,22 @@ import Card from 'react-bootstrap/Card';
 import Button from "react-bootstrap/Button";
 
 
-function Item({item}) {
+function Item({item, onItemUpdate}) {
+     
+    function handleNewBid(){
+        fetch(`http://localhost:3000/items/${item.bid}`, {
+          method: "PATCH",
+          headers: {"Content-Type" : "application/json", 
+          },
+          body: JSON.stringify({
+            bid: item.bid
+          }),
+        })
+        .then(r => r.json())
+        .then((updatedItem) => onItemUpdate(updatedItem))
+      }
+
+
   return (
     <Card class="col-4">
       <Card.Header></Card.Header>
@@ -16,7 +31,7 @@ function Item({item}) {
         <Card.Text>
             {item.description}
         </Card.Text>
-        <Form>
+        <Form onSubmit={handleNewBid}>
         <Form.Label>Enter your bid:</Form.Label>
         <Form.Control type="bid" placeholder="Enter minimum bid" />
         </Form>
