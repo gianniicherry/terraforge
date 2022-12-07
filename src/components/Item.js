@@ -6,14 +6,15 @@ import Button from "react-bootstrap/Button";
 
 function Item({item, onItemUpdate}) {
      
-    function handleNewBid(){
-        fetch(`http://localhost:3000/items/${item.bid}`, {
+    function handleNewBid(e){
+        console.log('new bid')
+        e.preventDefault()
+        debugger;
+        fetch(`http://localhost:3000/items/${item.id}`, {
           method: "PATCH",
           headers: {"Content-Type" : "application/json", 
           },
-          body: JSON.stringify({
-            bid: item.bid
-          }),
+          body: JSON.stringify(item.bid),
         })
         .then(r => r.json())
         .then((updatedItem) => onItemUpdate(updatedItem))
@@ -32,12 +33,13 @@ function Item({item, onItemUpdate}) {
             {item.description}
         </Card.Text>
         <Form onSubmit={handleNewBid}>
-        <Form.Label>Enter your bid:</Form.Label>
-        <Form.Control type="bid" placeholder="Enter minimum bid" />
+            <Form.Label>Enter your bid:</Form.Label>
+            <Form.Control type="bid" placeholder="Enter minimum bid" />
+        
+            <Button variant="primary" type="submit">
+            Submit
+            </Button>
         </Form>
-        <Button variant="primary" type="submit">
-        Submit
-      </Button>
       </Card.Body>
     </Card>
   );

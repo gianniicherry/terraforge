@@ -17,7 +17,14 @@ function ItemList() {
     }
 
     function handleItemUpdate(updatedItem){
-            setItems(updatedItem)
+        const updatedItems = items.map((item) => {
+            if (item.bid < updatedItem.bid) {
+              return updatedItem;
+            } else {
+              return item;
+            }
+          });
+          setItems(updatedItems);
     }
 
     return (
