@@ -16,16 +16,6 @@ function ItemList() {
         setItems([...items, newItem ])
     }
 
-    function handleItemUpdate(updatedItem){
-        const updatedItems = items.map((item) => {
-            if (item.bid < updatedItem.bid) {
-              return updatedItem;
-            } else {
-              return item;
-            }
-          });
-          setItems(updatedItems);
-    }
 
     return (
         <div>
@@ -36,7 +26,7 @@ function ItemList() {
             <div class="row g-3">
                 {items.map((item) => (
                     <div class="col-12 col-md-6 col-lg-4">
-                    <Item key={item.id} item={item} onItemUpdate={handleItemUpdate}/>
+                    <Item key={item.id} item={item} />
                     </div>
                 ))}
                 </div>

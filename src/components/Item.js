@@ -1,23 +1,26 @@
-import React from "react"
+import React, {useState} from "react"
 import Form from 'react-bootstrap/Form';
 import Card from 'react-bootstrap/Card';
 import Button from "react-bootstrap/Button";
 
 
 function Item({item, onItemUpdate}) {
-     
-    function handleNewBid(e){
+
+    const [bid, setItemBid] = useState(item.bid)
+
+    function handleItemBid(event){
+        setItemBid(event.target.value)
         console.log('new bid')
-        e.preventDefault()
-        debugger;
+        event.preventDefault()
         fetch(`http://localhost:3000/items/${item.id}`, {
           method: "PATCH",
           headers: {"Content-Type" : "application/json", 
           },
-          body: JSON.stringify(item.bid),
+          body: JSON.stringify({
+              bid: bid}),
         })
         .then(r => r.json())
-        .then((updatedItem) => onItemUpdate(updatedItem))
+        .then((updatedItem) => setItemBid(updatedItem))
       }
 
 
@@ -32,7 +35,7 @@ function Item({item, onItemUpdate}) {
         <Card.Text>
             {item.description}
         </Card.Text>
-        <Form onSubmit={handleNewBid}>
+        <Form onSubmit={handleItemBid} value={bid}>
             <Form.Label>Enter your bid:</Form.Label>
             <Form.Control type="bid" placeholder="Enter minimum bid" />
         
