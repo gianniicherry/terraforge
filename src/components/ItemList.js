@@ -26,7 +26,7 @@ function ItemList() {
             <div class="row g-3">
                 {items.map((item) => (
                     <div class="col-12 col-md-6 col-lg-4">
-                    <Item key={item.id} item={item} />
+                    <Item key={item.id} item={item} onItemUpdate={setItems}/>
                     </div>
                 ))}
                 </div>
