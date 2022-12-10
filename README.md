@@ -11,4 +11,4 @@ Per financial quarter, Terraforge will allocate a set percentage of revenue gene
 ### Installation Instructions
 - Fork and clone
 - run `npm run start' in terminal
-- enjoy! 
+- enjoy! # my-app
