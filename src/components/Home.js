@@ -14,9 +14,6 @@ function Home() {
                 Terraforge was founded as an easier way to recycle electronic waste. 
                 Our mission is to ensure E-waste is handled sustainably in an effort to reduce harmful materials polluting our environment. 
             </DescriptionContainer>
-            <ButtonContainer>
-                <Button>Sell</Button> <Button>Bid</Button>
-            </ButtonContainer>
     </div>
     )
 }

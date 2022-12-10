@@ -7,7 +7,7 @@ function ItemList() {
     const [items, setItems] = useState([])
 
     useEffect(()=>{
-        fetch('http://localhost:3000/items')
+        fetch('http://localhost:3004/items')
         .then(r=> r.json())
         .then(data => setItems(data))
     })
@@ -16,22 +16,33 @@ function ItemList() {
         setItems([...items, newItem ])
     }
 
+    function handleUpdateItem(updatedItem) {
+        const updatedItems = items.map((item) => {
+          if (item.id === updatedItem.id && item.bid <= updatedItem.bid) {
+            return updatedItem;
+          } else {
+            return item;
+          }
+        });
+        setItems(updatedItems);
+      }
+
 
     return (
         <div>
         <WelcomeContainer>
         <Welcomebanner>Hello from Terraforge</Welcomebanner>
         </WelcomeContainer>
-        <div class="container">
-            <div class="row g-3">
+        <div className="container">
+            <div className="row g-3">
                 {items.map((item) => (
-                    <div class="col-12 col-md-6 col-lg-4">
-                    <Item key={item.id} item={item} onItemUpdate={setItems}/>
+                    <div className="col-12 col-md-6 col-lg-4">
+                    <Item key={item.id} item={item} onItemUpdate={handleUpdateItem}/>
                     </div>
                 ))}
                 </div>
             </div>
-            <div class="container g-3">
+            <div className="container g-3">
         <ItemForm onAddItem={handleAddItem}/>
         </div>
         </div>

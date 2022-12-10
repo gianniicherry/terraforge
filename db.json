@@ -4,21 +4,21 @@
       "id": 1,
       "name": "Apple Macbook Pro",
       "category": "Laptop",
-      "bid": 8,
+      "bid": "16",
       "description": "Brand new. never opened current bid OBO."
     },
     {
       "id": 2,
       "name": "Apple Iphone 11",
       "category": "Cellphone",
-      "bid": 14,
+      "bid": "17",
       "description": "Some water damage, still functions intermitently. Slight crack on screen."
     },
     {
       "id": 3,
       "name": "HP Laptop",
       "category": "Laptop",
-      "bid": 3,
+      "bid": "5",
       "description": "Slight scratches, fan noise occasionally. comes with original box."
     },
     {

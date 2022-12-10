@@ -14,7 +14,7 @@ function App() {
     <Navbar />
     <Routes>
       <Route path="/" element={<Home/>}/>
-      <Route path="/Sell" element={<ItemForm/>}/>
+      <Route path="/ItemForm" element={<ItemForm/>}/>
       <Route path="/Bids" element={<ItemList/>}/>
     </Routes>
   </Router>

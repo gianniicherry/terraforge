@@ -6,22 +6,29 @@ import Button from "react-bootstrap/Button";
 
 function Item({item, onItemUpdate}) {
 
-    const [bid, setItemBid] = useState(item.bid)
+    const [newBid, setNewBid] = useState("")
+    
 
-    function handleItemBid(event){
-        setItemBid(event.target.value)
-        console.log('new bid')
-        event.preventDefault()
-        fetch(`http://localhost:3000/items/${item.id}`, {
+    function handleItemBid(e){
+      e.preventDefault()
+      if(newBid >= item.bid) {
+        e.preventDefault()
+        fetch(`http://localhost:3004/items/${item.id}`, {
           method: "PATCH",
           headers: {"Content-Type" : "application/json", 
           },
           body: JSON.stringify({
-              bid: bid}),
+            bid: newBid,
+          }),
         })
         .then(r => r.json())
-        .then((updatedItem) => setItemBid(updatedItem))
+        .then((updatedItem) => onItemUpdate(updatedItem))
+        
+      } else {
+        return null
       }
+      e.target.reset()
+    }
 
 
   return (
@@ -35,12 +42,12 @@ function Item({item, onItemUpdate}) {
         <Card.Text>
             {item.description}
         </Card.Text>
-        <Form onSubmit={handleItemBid} value={bid}>
+        <Form onSubmit={handleItemBid}>
             <Form.Label>Enter your bid:</Form.Label>
-            <Form.Control type="bid" placeholder="Enter minimum bid" />
+            <Form.Control type="bid" placeholder="Enter minimum bid" onChange={(e)=> setNewBid(e.target.value)}/>
         
-            <Button variant="primary" type="submit">
-            Submit
+            <Button variant="primary" type="submit" >
+              Submit
             </Button>
         </Form>
       </Card.Body>

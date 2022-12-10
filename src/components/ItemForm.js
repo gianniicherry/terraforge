@@ -25,17 +25,18 @@ function ItemForm({onAddItem}) {
             body: JSON.stringify(itemData),
         })
         .then(r => r.json())
-        .then((newItem)=> onAddItem(newItem)) 
+        .then((newItem)=> onAddItem(newItem))
+        e.target.reset() 
     }
 
 
   return (
-    <div class="container">
+    <div className="container">
         <WelcomeContainer>
         <Welcomebanner>Let's get Started</Welcomebanner>
         </WelcomeContainer>
 
-        <div class="container g-7">
+        <div className="container g-7">
             <Card body>Recycling your products with Terraforge is Easy. First, please tell us a little bit more about what you would like to recycle. From there, we'll hold your item in escrow for 7 days, where other users can actively bid on your item. If a bid is accepted, you'll receive your payout. If not, your item will be sent to the forge where it's recycled, and your paid out in the TFG value.</Card>
         </div>
     <Form onSubmit={handleSubmit}>
